@@ -38,3 +38,7 @@ To run this project locally, follow these steps:
     ```
 
 This will start the application, and you can access it in your browser at `http://localhost:5173` (or another port if 5173 is in use).
+ and to test this use this login creds for the demo 
+
+user name --  doctor@test.com
+password -- test123
