@@ -1,0 +1,232 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Medical Theme Colors - Hospital Grade */
+    --background: 210 20% 98%; /* Light medical gray */
+    --foreground: 237 84% 8%;  /* Navy text */
+
+    --card: 0 0% 100%;         /* Pure white cards */
+    --card-foreground: 237 84% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 237 84% 8%;
+
+    --primary: 180 25% 46%;    /* Medical Aqua #38B2AC */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 237 84% 8%;   /* Navy #1A237E */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 20% 96%;      /* Subtle gray backgrounds */
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 180 25% 46%;     /* Aqua accent */
+    --accent-foreground: 0 0% 100%;
+
+    --success: 142 76% 36%;    /* Medical green for taken pills */
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;     /* Orange for reminders */
+    --warning-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 180 25% 46%;       /* Aqua focus ring */
+
+    --radius: 1rem;            /* More rounded for medical feel */
+
+    --sidebar-background: 237 84% 8%;     /* Navy sidebar */
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 180 25% 46%;       /* Aqua highlights */
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 237 70% 12%;        /* Slightly lighter navy */
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 237 70% 15%;
+    --sidebar-ring: 180 25% 46%;
+
+    /* Medical specific gradients */
+    --gradient-medical: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 20% 98%));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+
+    /* Medical shadows */
+    --shadow-medical: 0 10px 30px -5px hsl(var(--primary) / 0.15);
+    --shadow-card: 0 4px 20px -2px hsl(237 84% 8% / 0.08);
+    --shadow-hover: 0 8px 25px -5px hsl(var(--primary) / 0.25);
+
+    /* Animation curves */
+    --ease-medical: cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-medical: all 0.3s var(--ease-medical);
+  }
+
+  .dark {
+    /* Dark Medical Theme - Night shift friendly */
+    --background: 237 84% 4%;
+    --foreground: 210 20% 98%;
+
+    --card: 237 70% 6%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 237 70% 6%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 180 25% 46%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 237 70% 8%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 237 70% 8%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 180 25% 46%;
+    --accent-foreground: 0 0% 100%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 237 70% 12%;
+    --input: 237 70% 12%;
+    --ring: 180 25% 46%;
+
+    --sidebar-background: 237 84% 2%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-primary: 180 25% 46%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 237 70% 6%;
+    --sidebar-accent-foreground: 210 20% 98%;
+    --sidebar-border: 237 70% 8%;
+    --sidebar-ring: 180 25% 46%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer components {
+  /* Medical Button Variants */
+  .medical-btn-primary {
+    @apply bg-gradient-medical text-white shadow-medical border-0 
+           hover:shadow-card-hover hover:scale-[1.02] 
+           transition-all duration-300 ease-medical font-semibold;
+  }
+
+  .medical-btn-secondary {
+    @apply bg-secondary text-secondary-foreground shadow-medical-card 
+           hover:bg-secondary/90 hover:shadow-card-hover
+           transition-all duration-300 ease-medical font-medium;
+  }
+
+  .medical-btn-success {
+    @apply bg-success text-success-foreground shadow-lg
+           hover:bg-success/90 hover:shadow-card-hover
+           transition-all duration-300 ease-medical font-medium;
+  }
+
+  .medical-btn-danger {
+    @apply text-destructive border-destructive/30 hover:bg-destructive 
+           hover:text-destructive-foreground hover:border-destructive
+           transition-all duration-300 ease-medical;
+  }
+
+  /* Medical Input Styles */
+  .medical-input {
+    @apply border-2 border-border bg-card/50 backdrop-blur-sm
+           focus:border-primary focus:ring-2 focus:ring-primary/20
+           transition-all duration-300 ease-medical
+           placeholder:text-muted-foreground/60;
+  }
+
+  /* Medical Card Styles */
+  .medical-card {
+    @apply bg-gradient-card backdrop-blur-sm border border-border/50
+           shadow-medical-card transition-all duration-300 ease-medical;
+  }
+
+  /* Toast Customizations */
+  .medical-toast-success {
+    @apply bg-success text-success-foreground border-success/20;
+  }
+
+  /* Floating Label Effect */
+  .floating-label-group {
+    @apply relative;
+  }
+
+  .floating-label {
+    @apply absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground
+           transition-all duration-200 ease-medical pointer-events-none
+           bg-background px-1;
+  }
+
+  .floating-input:focus + .floating-label,
+  .floating-input:not(:placeholder-shown) + .floating-label {
+    @apply top-0 text-xs text-primary -translate-y-1/2;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-gradient-medical bg-clip-text text-transparent;
+  }
+
+  /* Medical Progress Animation */
+  .medical-progress {
+    @apply relative overflow-hidden;
+  }
+
+  .medical-progress::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent
+           -translate-x-full animate-pulse;
+  }
+
+  /* Pulse Animation for Important Elements */
+  .medical-pulse {
+    @apply animate-pulse;
+  }
+
+  /* Hover Glow Effect */
+  .hover-glow {
+    @apply transition-all duration-300 ease-medical;
+  }
+
+  .hover-glow:hover {
+    @apply shadow-card-hover;
+  }
+
+  /* Medical Status Badge */
+  .status-taken {
+    @apply bg-success/15 text-success border-success/30;
+  }
+
+  .status-pending {
+    @apply bg-warning/15 text-warning border-warning/30;
+  }
+
+  .status-overdue {
+    @apply bg-destructive/15 text-destructive border-destructive/30;
+  }
+}
