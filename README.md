@@ -42,3 +42,6 @@ This will start the application, and you can access it in your browser at `http:
 
 user name --  doctor@test.com
 password -- test123
+
+
+MY react navtive app is live --   https://sowmyavarma43.github.io/medi-connect/
